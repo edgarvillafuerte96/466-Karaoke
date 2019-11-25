@@ -1,28 +1,43 @@
-Create DATABASE KARAOKE;
-USE KARAOKE;
-
-CREATE TABLE USER (
-    phoneNum INT NOT NULL,
-    firstName VARCHAR (15),
-    lastName VARCHAR(15),
+CREATE TABLE USERS (
+    phoneNum INT NOT NULL PRIMARY KEY,
+    firstName VARCHAR (15) NOT NULL,
+    lastName VARCHAR(15) NOT NULL,
     timeDate DATETIME,
-    FileId int ,
-    PRIMARY KEY (phoneNum),
-    FOREIGN KEY (timeDate) REFERENCES SELECTS (timeDate),
-    FOREIGN KEY (fileId) References FILES(fileId)
-);
+    FileId int
+) ;
 
 CREATE TABLE  FILES (
     fileId int NOT NULL AUTO_INCREMENT,
-    timeDate DATETIME NOT NULL,
+    timeDate DATETIME,
     songID int NOT NULL,
-    PRIMARY KEY (fileId),
-    FOREIGN KEY (timeDate) REFERENCES SELECTS (timeDate),
-    FOREIGN KEY (songID) REFERENCES SONG (songID)
-);
+    PRIMARY KEY (fileId)
+)  ;
 
 CREATE TABLE SONG (
     songID int AUTO_INCREMENT NOT NULL,
-    title VARCHAR(25),
-    bandArtist varchar (25),
+    title VARCHAR(25) NOT NULL,
+    bandArtist varchar (25) NOT NULL,
+    fileId int NOT NULL,
+    PRIMARY KEY (songID)
 );
+
+CREATE TABLE CONTRIBUTOR (
+    contributorId int AUTO_INCREMENT NOT NULL,
+    fName VARCHAR(25) NOT NULL,
+    PRIMARY KEY(contributorId),
+);
+
+CREATE TABLE SELECTS (
+    timeDate DATETIME NOT NULL,
+    ammount INT,
+    phoneNum INT NOT NULL,
+    fileId int NOT NULL,
+    PRIMARY KEY (timeDate)
+) ;
+
+CREATE TABLE TYPECONTRIBUTOR (
+    types VARCHAR (25) NOT NULL,
+    songId int NOT NULL,
+    contributorId INT NOT NULL,
+    PRIMARY KEY (types)
+) ;
