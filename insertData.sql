@@ -50,7 +50,7 @@ INSERT INTO FILE (songID, version) VALUES
 (9, 'Original'),
 (10, 'Original');
 
-INSERT INTO SELECTS (tim6Date, userID, amount, fileID) VALUES
+INSERT INTO SELECTS (timeDate, userID, amount, fileID) VALUES
 ('2019-12-04 14:23:55', 3, 0, 1),
 ('2019-12-04 16:36:21', 2, 2.00, 16),
 ('2019-12-04 16:27:18', 5, .50, 4),
