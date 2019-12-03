@@ -35,8 +35,8 @@ catch(PDOexception $e) { // handle that exception
 					<tbody>
 <?php
 //Paid add
-$sql = "SELECT P.paidAddID, T.text AS title, A.name as artist, U.name as user, F.fileID FROM Title T, File F, Artist A, User U, PaidAdd P WHERE F.fileID = P.fileID AND T.titleID = F.titleID AND A.artistID = F.artistID AND U.userID = P.userID AND P.played=0 ORDER BY P.amount DESC;";
-$sql = "Select  "
+//$sql = "SELECT P.paidAddID, T.text AS title, A.name as artist, U.name as user, F.fileID FROM Title T, File F, Artist A, User U, PaidAdd P WHERE F.fileID = P.fileID AND T.titleID = F.titleID AND A.artistID = F.artistID AND U.userID = P.userID AND P.played=0 ORDER BY P.amount DESC;";
+$sql = "SELECT ammount, artist, title, fileID, firstName, timeDate FROM USER, SONG, FILE, SELECTS WHERE ammount !=0 ORDER BY amount DESC"
 $result = $pdo->query($sql);
 while ($re = $result->fetch(pdo::FETCH_BOTH))
 {
@@ -67,27 +67,3 @@ while ($re = $result->fetch(pdo::FETCH_BOTH))
 					</thead>
 					<tbody>
 <?php
-//Free add
-$sql = "SELECT FA.freeAddID, T.text AS title, A.name as artist, U.name as user, F.fileID FROM Title T, File F, Artist A, User U, FreeAdd FA WHERE F.fileID = FA.fileID AND T.titleID = F.titleID AND A.artistID = F.artistID AND U.userID = FA.userID AND FA.played=0;";
-$result = $pdo->query($sql);
-while ($re = $result->fetch(pdo::FETCH_BOTH))
-{
-	echo "<tr class='item'>";
-	echo "<td><label class='row-item' for='" . $re['freeAddID'] . "'><input type='radio' name='freeSelect' value='" . $re['freeAddID'] . "' id='" . $re['freeAddID'] ."'></label></td>";
-	echo "<td><label class='row-item' for='" . $re['freeAddID'] . "'>" . $re['title'] . "</label></td>";
-	echo "<td><label class='row-item' for='" . $re['freeAddID'] . "'>" . $re['artist'] . "</label></td>";
-	echo "<td><label class='row-item' for='" . $re['freeAddID'] . "'>" . $re['user'] . "</label></td>";
-	echo "<td><label class='row-item' for='" . $re['freeAddID'] . "'>" . $re['fileID'] . "</label></td></tr>";
-}
-?>
-					</tbody>
-				</table>
-			</div>
-		</form>
-		<div class="bottom-buffer"></div>
-		<div class="bottom-bar">
-			<input type="submit" class="result-submit" value="Clear Paid Queue" form="DJ1">
-			<input type="submit" class="result-submit" value="Clear Free Queue" form="DJ2">
-		</div>
-	</body>
-</html>
