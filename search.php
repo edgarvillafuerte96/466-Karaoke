@@ -1,19 +1,30 @@
 <html>
-	<head style> <title> Karoake Group Project </title> </head>
+<?php
+$username = "z1858089";
+$password = "1985Aug25";
 
-	<h1 style = "font-family: Comic Sans MS;" align="center"> Karoake Signup Page </h1>
+try { // if something goes wrong, an exception is thrown
+        $dsn = "mysql:host=courses;dbname=z1858089";
+        $pdo = new PDO($dsn, $username, $password);
+}
+catch(PDOexception $e) { // handle that exception
+        echo "Connection to database failed: " . $e->getMessage();
+}
+?>
+<html>
+        <head>
+                <title>Edgar's Karaoke Bar</title>
 
-	<h3 style = "font-family: Comic Sans MS;" align="center"> Enter Term to Search By </h3>
-	<body>
-	<form align="center" method="POST" action="searchResults.php">
-		<select name="searchType">
-			<option value="Title"> Title </option>
-			<option value="Artist"> Artist </option>
-			<option value="Contributer"> Contributer </option>
-		</select>
-		<input type="text" name="searchTerm" size=30>
-		<input type="submit" name="submit">
-	</form>
-	</body>
+        </head>
+        <body bgcolor=”E1D9D7”>
+
+                <div class="search">
+                        <h1 align = "center" class="main-title">Karaoke</h1>
+                        <form align = "center" method="post" action="results.php">
+                                Search Song: <br> <br>
+
+                                <input type="search" name="searchbox"> <br> <br>
+                        </form>
+                </div>
+        </body>
 </html>
-
