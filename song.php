@@ -1,8 +1,13 @@
+
+                <h1>Submission Complete</h1>
 <?php
-$username = "z1858089";
-$password = "1985Aug25";
+if ((isset($_POST['paid']) ? $_POST['paid'] : null))
+{
+<?php
+$username="z1859426"
+$password="1997Jun10"
 try {
-        $dsn = "mysql:host=courses;dbname=z1858089";
+        $dsn = "mysql:host=courses;dbname=z1859426";
         $pdo = new PDO($dsn, $username, $password);
 }
 catch(PDOexception $e) {
@@ -34,10 +39,10 @@ if ((isset($_POST['paid']) ? $_POST['paid'] : null))
           $stmt2->execute(array(':name' => $_POST['name']));
           $userID = $pdo->lastInsertId();
         }
-        $time = date('H:i:s', time());
-        $sql = "INSERT INTO PaidAdd(userID, fileID, time, amount, played) VALUES(:userID, :fileID, :time, :amount, false);";
+        $timeDate = date('H:i:s', time());
+        $sql = "INSERT INTO SELECTS(userID, fileID, timeDate, amount) VALUES(:userID, :fileID, :timeDate, :amount, false);";
         $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $stmt->execute(array(':userID' => $userID, ':fileID' => $_POST['file'], ':time' => $time, ':amount' => $_POST['amount']));
+        $stmt->execute(array(':userID' => $userID, ':fileID' => $_POST['file'], ':timeDate' => $timeDate, ':amount' => $_POST['amount']));
         echo "<br>Your song has been added to the paid queue";
 }
 else
@@ -48,7 +53,7 @@ else
         $result = $stmt->fetch(pdo::FETCH_BOTH);
         if ($result)
         {
-                $uid = $result['userID'];
+                $userID = $result['userID'];
         }
         else
         {
@@ -57,10 +62,10 @@ else
                 $stmt2->execute(array(':name' => $_POST['name']));
                 $userID = $pdo->lastInsertId();
         }
-        $time = date('H:i:s', time());
-        $sql = "INSERT INTO FreeAdd(userID, fileID, time, played) VALUES(:userID, :fileID, :time, false);";
+        $timeDate = date('H:i:s', time());
+        $sql = "INSERT INTO SELECTS(userID, fileID, timeDate) VALUES(:userID, :fileID, :timeDate, false);";
         $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $stmt->execute(array(':userID' => $uid, ':fileID' => $_POST['file'], ':time' => $time));
+        $stmt->execute(array(':userID' => $userID, ':fileID' => $_POST['file'], ':timeDate' => $timeDate));
         echo "<br>Your song has been added to the free queue";
 }
 ?>
@@ -68,3 +73,4 @@ else
         <br><a href="search.php">Back to Search</a>
         </body>
 </html>
+
