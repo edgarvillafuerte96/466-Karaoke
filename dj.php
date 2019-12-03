@@ -1,7 +1,8 @@
 <?php
-try { // if something goes wrong, an exception is thrown
-    $password = "1981Aug25";
+	$password = "1981Aug25";
     $username = "z1858089";
+try { // if something goes wrong, an exception is thrown
+    
 	$dsn = "mysql:host=courses;dbname=z1858089";
 	$pdo = new PDO($dsn, $username, $password);
 }
@@ -36,7 +37,7 @@ catch(PDOexception $e) { // handle that exception
 <?php
 //Paid add
 //$sql = "SELECT P.paidAddID, T.text AS title, A.name as artist, U.name as user, F.fileID FROM Title T, File F, Artist A, User U, PaidAdd P WHERE F.fileID = P.fileID AND T.titleID = F.titleID AND A.artistID = F.artistID AND U.userID = P.userID AND P.played=0 ORDER BY P.amount DESC;";
-$sql = "SELECT ammount, artist, title, fileID, user AS firstName, timeDate FROM USER, SONG, FILE, SELECTS WHERE ammount !=0 ORDER BY amount DESC;";
+$sql = "SELECT amount, bandArtist, title, fileID, firstName, timeDate FROM USER, SONG, FILE, SELECTS WHERE amount !=0 ORDER BY amount DESC;";
 $result = $pdo->query($sql);
 while ($re = $result->fetch(pdo::FETCH_BOTH))
 {
