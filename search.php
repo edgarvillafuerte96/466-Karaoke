@@ -20,7 +20,7 @@ catch(PDOexception $e) { // handle that exception
 
                 <div class="search">
                         <h1 align = "center" class="main-title">Karaoke</h1>
-                        <form align = "center" method="post" action="results.php">
+                        <form align = "center" method="post" action="result.php">
                                 Search Song: <br> <br>
 
                                 <input type="search" name="searchbox"> <br> <br>
