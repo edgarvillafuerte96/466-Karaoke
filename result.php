@@ -139,17 +139,17 @@
             echo "</div>";
         }
         else if(isset($_POST['result'])) {
-            $file = $_POST['result'];
+            $fileID = $_POST['result'];
             $phoneNum = $_POST['phoneNum'];
             $amount = $_POST['amount'];
             $name = $_POST['name'];
 
 
-            if ($fileID == NULL || $phoneNum == NULL) {
+            if ($name == NULL || $phoneNum == NULL || $fileID) {
                 echo "<p>Submission Failed. Fill all fields.</p>";
             }
             else {
-                $sql = "INSERT INTO USER(phoneNum) VALUES ('$phoneNum');";
+                $sql = "INSERT INTO USER(phoneNum, name) VALUES ('$phoneNum', '$name');";
                 try {
                     $result = $pdo->query($sql);
                     echo "<p> Submission Successful! </p>";
