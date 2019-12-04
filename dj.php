@@ -33,27 +33,27 @@ $sql = "SELECT DISTINCT SELECTS.amount, SONG.bandArtist, SONG.title, FILE.fileID
 $result = $pdo->query($sql);
 //while ($re = $result->fetch(pdo::FETCH_BOTH))
 echo "<table border =1>";
-echo '<td>Select</td>';
-echo '<td>Title</td>';
-echo '<td>Artist</td>';
-echo '<td>Name</td>';
-echo '<td>FileID</td>';
+echo '<td width = "70">Select</td>';
+echo '<td width = "70">Title</td>';
+echo '<td width = "70">Artist</td>';
+echo '<td width = "70">Name</td>';
+echo '<td width = "70">FileID</td>';
 echo "<table/>";
 
 foreach ($result as $rows){
 	echo "<table border =1>";
 	//button to select
-	echo '<td width = "50">';
+	echo '<td width = "70">';
 	echo $rows['title'];
 	echo '</td>';
-	echo '<td>';
-	echo $rows['bandArtist'];
+	echo '<td width = "70">';
+		echo $rows['bandArtist'];
 	echo '</td>';
-	echo '<td>';
-	echo $rows['firstName'];
+	echo '<td width = "70">';
+		echo $rows['firstName'];
 	echo '</td>';
-	echo '<td>';
-	echo $rows['fileID'];
+	echo '<td width = "70">';
+		echo $rows['fileID'];
 	echo '</td>';
 	echo "<table/>";
 }
