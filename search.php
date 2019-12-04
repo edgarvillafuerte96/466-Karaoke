@@ -49,10 +49,10 @@
             <label>Choose an Artist<label>
             <?php 
                         $sql = "SELECT DISTINCT bandArtist FROM SONG;";
-                        $selectArtist = $pdo -> query($sql);
+                        $selectbandArtist = $pdo -> query($sql);
 
-                        echo "<select name='artist'>";
-                                foreach ($selectArtist as $row){
+                        echo "<select name='bandArtist'>";
+                                foreach ($selectbandArtist as $row){
                                     echo  '<option value ="';
                                     echo $row['bandArtist'];
                                     echo  '" >';
@@ -71,7 +71,7 @@
                 $sql = "SELECT * FROM CONTRIBUTOR;";
                 $selectContributor = $pdo -> query($sql);
 
-                echo "<select name='contributor'>";
+                echo "<select name='contributorName'>";
                         foreach ($selectContributor as $row){
                             echo  '<option value ="';
                             echo $row['contributorID'];
@@ -91,4 +91,3 @@
     </body>
 
 </html>
-
