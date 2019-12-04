@@ -10,9 +10,9 @@
 
         <?php
          try {
-            $username = "z1858089";
-            $password = "1985Aug25";
-            $dsn = "mysql:host=courses;dbname=z1858089";
+            $username = "z1859426";
+            $password = "1997Jun10";
+            $dsn = "mysql:host=courses;dbname=z1859426";
             $pdo = new PDO($dsn, $username, $password);
             }
         catch(PDOexception $e) { 
@@ -28,7 +28,7 @@
             $sth = $pdo->prepare($sql);
             $sth->execute();
             $res = $sth->fetchAll(PDO::FETCH_ASSOC);
-            $sql = "SELECT * FROM SONG inner join FILES on SONG.bandArtist = '$artist' AND SONG.songID = FILES.songID"
+            $sql = "SELECT * FROM SONG inner join FILES on SONG.bandArtist = '$bandArtist' AND SONG.songID = FILES.songID"
             $result = $pdo->query($sql);
             echo "<div class='formHeader'>";
             echo "<h1>Choose a Song</h1>";
@@ -187,3 +187,4 @@
         ?>
     </body>
 </html>
+
