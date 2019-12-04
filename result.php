@@ -5,14 +5,14 @@
 
     <div class='topnav'>
         <h1 class='pageTitle'>Edgar's Karaoke Bar</h1>
-        <a href='http://students.cs.niu.edu/~z1858089/public_html/search.php'>Home</a>
+        <a href='http://students.cs.niu.edu/~z1859426/public_html/search.php'>Home</a>
     </div>
 
         <?php
          try {
-            $username = "z1858089";
-            $password = "1985Aug25";
-            $dsn = "mysql:host=courses;dbname=z1858089";
+            $username = "z1859426";
+            $password = "1997Jun10";
+            $dsn = "mysql:host=courses;dbname=z1859426";
             $pdo = new PDO($dsn, $username, $password);
             }
         catch(PDOexception $e) { 
@@ -44,6 +44,7 @@
 			echo "<th> Band Artist </th>";
             echo "<th> songID </th>";
             echo "<th> fileID </th>";
+            echo "<th> Version </th>";
             echo "<th> Select </th>";
             echo "</tr>";
             foreach($pdo->query($sql) as $row) {
@@ -51,8 +52,8 @@
                 $bandArtist = $row['bandArtist'];
 				$songID= $row['songID'];
 				$fileID = $row['fileID'];
-
-                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>"."<input type='radio' name='result' value='$fileID'></td></tr>";
+                                $version = $row['version'];
+                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='result' value='$fileID'></td></tr>";
             }
 
             echo "</table>";
@@ -83,6 +84,7 @@
 			echo "<th> Band Artist </th>";
             echo "<th> songID </th>";
             echo "<th> fileID </th>";
+            echo "<th> Version </th>";
             echo "<th> Select </th>";
             echo "</tr>";
             foreach($pdo->query($sql) as $row) {
@@ -90,8 +92,9 @@
                 $bandArtist = $row['bandArtist'];
 				$songID= $row['songID'];
 				$fileID = $row['fileID'];
+                                $version = $row['version'];
+                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='result' value='$fileID'></td></tr>";
 
-                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>"."<input type='radio' name='result' value='$fileID'></td></tr>";
             }
             
             echo "</table>";
@@ -103,7 +106,7 @@
         }
         else if(isset($_POST['TYPECONTRIBUTOR'])) {
             $contributor = $_POST['TYPECONTRIBUTOR'];
-            $sql = "SELECT * FROM SONG inner join TYPECONTRIBUTOR on TYPECONTRIBUTOR.contributorID = '$contributor' AND SONG.songID = TYPECONTRIBUTOR.songID inner join FILES on Songs.SID = FILES.SID;";
+            $sql = "SELECT * FROM SONG inner join TYPECONTRIBUTOR on TYPECONTRIBUTOR.contributorID = '$contributor' AND SONG.songID = TYPECONTRIBUTOR.songID inner join FILES on SONG.songID = FILES.songID;";
 
             $result = $pdo->query($sql);
             echo "<div>";
@@ -120,6 +123,7 @@
 			echo "<th> Band Artist </th>";
             echo "<th> songID </th>";
             echo "<th> fileID </th>";
+            echo "<th> Version </th>";
             echo "<th> Select </th>";
             echo "</tr>";
             foreach($pdo->query($sql) as $row) {
@@ -127,8 +131,9 @@
                 $bandArtist = $row['bandArtist'];
 				$songID= $row['songID'];
 				$fileID = $row['fileID'];
+                                $version = $row['version'];
+                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='result' value='$fileID'></td></tr>";
 
-                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>"."<input type='radio' name='result' value='$fileID'></td></tr>";
             }
  
             echo "</table>";
@@ -145,7 +150,7 @@
             $name = $_POST['name'];
 
 
-            if ($name == NULL || $phoneNum == NULL || $fileID) {
+            if ( $phoneNum == NULL || $name == NULL) {
                 echo "<p>Submission Failed. Fill all fields.</p>";
             }
             else {
