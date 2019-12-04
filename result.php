@@ -3,7 +3,8 @@
         <title>Edgar's Result Page</title>
     </head>
 	<body>
-	<a href='http://students.cs.niu.edu/~z1858089/search.php'><font color="white">Return to Search Page</font></a>
+	<a href='http://students.cs.niu.edu/~z1858089/search.php'><font color="white">Return to Search Page</font></a></br>
+	<a href='http://students.cs.niu.edu/~z1858089/dj.php'><font color="white">Go to DJ Interface</font></a>
 	<style> body { 
             text-align: center; 
         } 
