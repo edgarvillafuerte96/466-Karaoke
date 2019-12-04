@@ -32,7 +32,7 @@ CREATE TABLE SELECTS (
     userID int NOT NULL,
     fileID int NOT NULL,
     PRIMARY KEY (timeDate, userID),
-    FOREIGN KEY (fileID) references FILE (fileID),
+    FOREIGN KEY (fileID) references FILES (fileID),
     FOREIGN KEY (userID) references USER (userID)
 );
 
