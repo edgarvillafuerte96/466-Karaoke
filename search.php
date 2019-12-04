@@ -7,10 +7,10 @@
     <?php
         try {
 
-            $username = "z1858089";
-            $password = "1985Aug25";
+            $username = "z1859426";
+            $password = "1997Jun10";
 
-            $dsn = "mysql:host=courses;dbname=z1858089";
+            $dsn = "mysql:host=courses;dbname=z1859426";
             $pdo = new PDO($dsn, $username, $password);
             }
         catch(PDOexception $e) { 
@@ -30,7 +30,7 @@
                 $sql = "SELECT * FROM SONG;";
                 $selectSong= $pdo -> query($sql);
                 
-                echo "<select name='songTitle'>";
+                echo "<select name='title'>";
                         foreach ($selectSong as $row){
                             echo  '<option value ="';
                             echo $row['title'];
@@ -49,10 +49,10 @@
             <label>Choose an Artist<label>
             <?php 
                         $sql = "SELECT DISTINCT bandArtist FROM SONG;";
-                        $selectbandArtist = $pdo -> query($sql);
+                        $selectArtist = $pdo -> query($sql);
 
                         echo "<select name='bandArtist'>";
-                                foreach ($selectbandArtist as $row){
+                                foreach ($selectArtist as $row){
                                     echo  '<option value ="';
                                     echo $row['bandArtist'];
                                     echo  '" >';
@@ -71,7 +71,7 @@
                 $sql = "SELECT * FROM CONTRIBUTOR;";
                 $selectContributor = $pdo -> query($sql);
 
-                echo "<select name='contributorName'>";
+                echo "<select name='contributor'>";
                         foreach ($selectContributor as $row){
                             echo  '<option value ="';
                             echo $row['contributorID'];
@@ -91,3 +91,4 @@
     </body>
 
 </html>
+
