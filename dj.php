@@ -38,22 +38,29 @@ echo '<td width = "70">Title</td>';
 echo '<td width = "70">Artist</td>';
 echo '<td width = "70">Name</td>';
 echo '<td width = "70">FileID</td>';
+echo '<td width = "70">Ammount</td>';
 echo "<table/>";
 
 foreach ($result as $rows){
 	echo "<table border =1>";
 	//button to select
 	echo '<td width = "70">';
+	echo '<input type = "radio" name = "selected"';
+	echo '</td>';
+	echo '<td width = "70">';
 	echo $rows['title'];
 	echo '</td>';
 	echo '<td width = "70">';
-		echo $rows['bandArtist'];
+	echo $rows['bandArtist'];
 	echo '</td>';
 	echo '<td width = "70">';
-		echo $rows['firstName'];
+	echo $rows['firstName'];
 	echo '</td>';
 	echo '<td width = "70">';
-		echo $rows['fileID'];
+	echo $rows['fileID'];
+	echo '</td>';
+	echo '<td width = "70">';
+	echo $rows['amount'];
 	echo '</td>';
 	echo "<table/>";
 }
