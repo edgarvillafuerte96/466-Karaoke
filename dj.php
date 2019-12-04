@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿﻿﻿<?php
+=======
+﻿<?php
+>>>>>>> b4ea33c1763ab7450ccfd45d739fc3f356e17b34
 	$password = "1985Aug25";
     $username = "z1858089";
 try { // if something goes wrong, an exception is thrown
@@ -28,11 +32,19 @@ catch(PDOexception $e) { // handle that exception
                     <?php
                     //Paid add
                     //$sql = "SELECT DISTINCT USER.firstName, SELECTS.amount, SONG.bandArtist, SONG.title, FILE.fileID,  SELECTS.timeDate FROM USER, SONG, FILE, SELECTS WHERE amount > 0 ORDER BY USER.firstName DESc ;";
+<<<<<<< HEAD
                       $sql = "SELECT U.name, SN.title, SN.bandArtist, F.fileID, F.version, SL.amount, F.version
                             FROM USER AS U
                             INNER JOIN SELECTS AS SL
                             ON U.USERID = SL.USERID
                             INNER JOIN FILES AS F
+=======
+                      $sql = "SELECT U.firstName, SN.title, SN.bandArtist, F.fileID, F.version, SL.amount, F.version
+                            FROM USER AS U
+                            INNER JOIN SELECTS AS SL
+                            ON U.USERID = SL.USERID
+                            INNER JOIN FILE AS F
+>>>>>>> b4ea33c1763ab7450ccfd45d739fc3f356e17b34
                             ON SL.FILEID = F.FILEID
                             INNER JOIN SONG SN
                             ON F.SONGID = SN.SONGID
@@ -94,7 +106,11 @@ catch(PDOexception $e) { // handle that exception
                             echo '
                             <td width="70">
                                 ';
+<<<<<<< HEAD
                                 echo $rows['name'];
+=======
+                                echo $rows['firstName'];
+>>>>>>> b4ea33c1763ab7450ccfd45d739fc3f356e17b34
                                 echo '
                             </td>';
                             echo '
