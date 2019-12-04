@@ -24,14 +24,14 @@ INSERT INTO CONTRIBUTOR (contributorName) VALUES
     ('Max Martin'),
     ('Quincy Jones');
 
-INSERT INTO USER (phoneNum, firstName, lastName) VALUES
-(6306667743, 'Aleena', 'Ahmad'),
-(6302054221, 'Edgar', 'Villafuerte'),
-(6305428202, 'Sahithi', 'Challapalli'),
-(6309406296, 'Omer', 'Ahmad'),
-(6309479478, 'Bradley', 'Kauser');
+INSERT INTO USER (phoneNum, name) VALUES
+(6306667743, 'Aleena Ahmad'),
+(6302054221, 'Edgar Villafuerte'),
+(6305428202, 'Sahithi Challapalli'),
+(6309406296, 'Payton Suchomel'),
+(6309479478, 'Omer Ahmad');
 
-INSERT INTO FILE (songID, version) VALUES
+INSERT INTO FILES (songID, version) VALUES
 (1, 'Original'),
 (1, 'The Muppets'),
 (1, 'Kanye West'),

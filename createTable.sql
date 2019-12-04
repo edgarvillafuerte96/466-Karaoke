@@ -1,8 +1,7 @@
 CREATE TABLE USER (
     userID int NOT NULL AUTO_INCREMENT,
     phoneNum varchar (10) NOT NULL,
-    firstName VARCHAR (50) NOT NULL,
-    lastName VARCHAR(50) NOT NULL,
+    name VARCHAR (50) NOT NULL,
     PRIMARY KEY (userID)
 ) ;
 
@@ -13,7 +12,7 @@ CREATE TABLE SONG (
     PRIMARY KEY (songID)
 );
 
-CREATE TABLE  FILE(
+CREATE TABLE  FILES(
     fileID int NOT NULL AUTO_INCREMENT,
     songID int NOT NULL,
     version varchar(50),
@@ -33,7 +32,7 @@ CREATE TABLE SELECTS (
     userID int NOT NULL,
     fileID int NOT NULL,
     PRIMARY KEY (timeDate, userID),
-    FOREIGN KEY (fileID) references FILE (fileID),
+    FOREIGN KEY (fileID) references FILES (fileID),
     FOREIGN KEY (userID) references USER (userID)
 );
 
