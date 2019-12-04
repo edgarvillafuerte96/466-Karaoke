@@ -1,44 +1,33 @@
 <html>
+
     <head>
         <title>Edgar's Karaoke Bar</title>
-		   <style> body { 
-            text-align: center; 
-        } 
-		h1 { 
-            color: #c63606; 
-        } 
-    </style>
     </head>
-	<style>
-body {
-  background-image: url('http://thearenatavern.com/wp-content/uploads/2019/01/Karaoke-Mic.jpg');
-  height: 100%; 
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-</style>
-<?php
-	try {
-		$username = "z1859426";
-        $password = "1997Jun10";
+
+    <?php
+        try {
+
+            $username = "z1859426";
+            $password = "1997Jun10";
+
             $dsn = "mysql:host=courses;dbname=z1859426";
             $pdo = new PDO($dsn, $username, $password);
-    }
-    catch(PDOexception $e) { 
-        echo "Connection to database failed: " . $e->getMessage();
-    }            
+            }
+        catch(PDOexception $e) { 
+            echo "Connection to database failed: " . $e->getMessage();
+            }            
     ?>
-    <div>
-        <h1><font face="verdana" size="48">Edgar's Karaoke Bar Search Page</font></h1>
+    <div class='topnav'>
+        <h1 class='pageTitle'>Edgar's Karaoke Bar Search Page</h1>
     </div>
-    <div>
-	</br></br></br>
+    <div class='bg'>
+    <div class='outerBox'>
+    <h1>Search Songs</h1>
+    <div class='formBox'>
         <form action='./result.php' method='post'>
-            <label><font face="verdana" color= "white"><b>Select a Song to Play<b></font><label>
-			</br></br>
+            <label>Select a Song to Play<label>
             <?php
-                $sql = "SELECT title FROM SONG;";
+                $sql = "SELECT * FROM SONG;";
                 $selectSong= $pdo -> query($sql);
                 
                 echo "<select name='title'>";
@@ -50,16 +39,14 @@ body {
                             echo  '</option>';
                         }
                         echo "</select>";
-
             ?>
-
+        
             <input type='submit' value='Pick Song'>
 
         </form>
-		</br></br>
+
         <form action='./result.php' method='post'>
-            <label><font face="verdana" color= "white"><b>Choose an Artist<b></font><label>
-			</br></br>
+            <label>Choose an Artist<label>
             <?php 
                         $sql = "SELECT DISTINCT bandArtist FROM SONG;";
                         $selectArtist = $pdo -> query($sql);
@@ -74,14 +61,12 @@ body {
                                 }
                                 echo "</select>";
             ?>
-		
+
             <input type='submit' value='Select Artist'>
 
         </form>
-		</br></br>
         <form action='./result.php' method='post'>
-            <label><font face="verdana" color= "white"><b>Choose a Contributor</b></font><label>
-			</br></br>
+            <label>Choose a Contributor<label>
             <?php
                 $sql = "SELECT * FROM CONTRIBUTOR;";
                 $selectContributor = $pdo -> query($sql);
@@ -95,13 +80,15 @@ body {
                             echo  '</option>';
                         }
                         echo "</select>";
-
             ?>
 
             <input type='submit' value='Select Contributor'>
 
         </form>
+    </div>
+    </div>
     </div> 
- </body>
+    </body>
+
 </html>
 

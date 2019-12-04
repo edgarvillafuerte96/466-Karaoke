@@ -19,6 +19,7 @@
         } 
 		th, td {
 			color: #ffffff;
+            text-align:center;
 		}
     </style>
     </head>
@@ -35,15 +36,14 @@ body {
 
         <?php
          try {
-            $username = "z1859426";
-            $password = "1997Jun10";
-            $dsn = "mysql:host=courses;dbname=z1859426";
+            $username = "z1858089";
+            $password = "1985Aug25";
+            $dsn = "mysql:host=courses;dbname=z1858089";
             $pdo = new PDO($dsn, $username, $password);
             }
         catch(PDOexception $e) { 
             echo "Connection to database failed: " . $e->getMessage();
-            }    
-        
+            } 
 
         if (isset($_POST['bandArtist'])) {
 
@@ -52,16 +52,21 @@ body {
             $sql = "SELECT * FROM SONG WHERE bandArtist = '$bandArtist';";
             $sth = $pdo->prepare($sql);
             $sth->execute();
-            //$res = $sth->fetchAll(PDO::FETCH_ASSOC);
+            $res = $sth->fetchAll(PDO::FETCH_ASSOC);
             $sql = "SELECT * FROM SONG inner join FILES on SONG.bandArtist = '$bandArtist' AND SONG.songID = FILES.songID";
             $result = $pdo->query($sql);
             echo "<div>";
-            echo "<h3>Please choose the correct version of the song you would like to put in the queue:</h3>";
-            echo "<table align='center'>";
+            echo "<p><font color='white'><b>Please enter your information to be entered into the queue</font></b></p>";
+			echo "<form action='' method='post' align='center'>";
+            echo "<input type='text' placeholder='Your Name' name='name'></br></br>
+                  <input type='text' placeholder='Your Phone Number' name='phoneNum'></br></br>
+                  <input type='text' placeholder='Amount To Pay' name='amount'></br>";
+            echo "<div>";
+            echo "<table align= 'center'>";
+            echo "<th><font color='white'><b>Please select the version of the song you would like to play:</font></b></th>";
             echo "<tr>";
 			echo "<th> Title </th>";
 			echo "<th> Band Artist </th>";
-            echo "<th> songID </th>";
             echo "<th> fileID </th>";
             echo "<th> Version </th>";
             echo "<th> Select </th>";
@@ -71,16 +76,12 @@ body {
                 $bandArtist = $row['bandArtist'];
 				$songID= $row['songID'];
 				$fileID = $row['fileID'];
-                $version = $row['version'];
-                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='fileID' value='$fileID'></td></tr>";
-            }
+                                $version = $row['version'];
+                                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='fileID' value='$fileID'></td></tr>";            }
+
             echo "</table>";
-			echo "<p><font color='white'><b>Please enter your information to be entered into the queue</font></b></p>";
-			echo "<form action='' method='post' align='center'>";
-            echo "<input type='text' placeholder='Your Name' name='name'></br>
-                  <input type='text' placeholder='Your Phone Number' name='phoneNum'></br>
-                  <input type='text' placeholder='Amount To Pay' name='amount'></br>";
-			echo "<h5> Note: if no amount is entered you will be put into the free queue</h5></br>";
+            echo "</div>";
+            echo "<h5> Note: if no amount is entered you will be put into the free queue</h5></br>";
             echo "<div><input type='submit' value='Submit'></div>";
             echo "</form>";
             echo "</div>";
@@ -93,12 +94,18 @@ body {
             $sql = "SELECT * FROM SONG inner join FILES on SONG.title = '$title' AND SONG.songID = FILES.songID";
             $result = $pdo->query($sql);
             echo "<div>";
-            echo "<h3>Please choose the correct version of the song you would like to put in the queue:</h3>";
+            echo "<p><font color='white'><b>Please enter your information to be entered into the queue</font></b></p>";
+			echo "<form action='' method='post' align='center'>";
+            echo "<form action='' method='post'>";
+            echo "<input type='text' placeholder='Your Name' name='name'></br></br>
+                  <input type='text' placeholder='Your Phone Number' name='phoneNum'></br></br>
+                  <input type='text' placeholder='Amount To Pay' name='amount'>";
+            echo "<div>";
+            echo "<p align='center'><font color='white'><b>Please select the version of the song you would like to play:</font></b></p>";
             echo "<table align='center'>";
             echo "<tr>";
 			echo "<th> Title </th>";
 			echo "<th> Band Artist </th>";
-            echo "<th> songID </th>";
             echo "<th> fileID </th>";
             echo "<th> Version </th>";
             echo "<th> Select </th>";
@@ -109,38 +116,34 @@ body {
 				$songID= $row['songID'];
 				$fileID = $row['fileID'];
                                 $version = $row['version'];
-                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='fileID' value='$fileID'></td></tr>";
-
+                                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='fileID' value='$fileID'></td></tr>";
             }
             
             echo "</table>";
-			echo "<p><font color='white'><b>Please enter your information to be entered into the queue</font><b></p>";
-            echo "<form action='' method='post' align='center'>";
-            echo "<input type='text' placeholder='Your Name' name='name'></br>
-                  <input type='text' placeholder='Your Phone Number' name='phoneNum'></br>
-                  <input type='text' placeholder='Amount To Pay' name='amount'></br>";
-			echo "<h5> Note: if no amount is entered you will be put into the free queue</h5></br>";
+            echo "</div>";
+            echo "<h5> Note: if no amount is entered you will be put into the free queue</h5></br>";
             echo "<div class='tSubmit'><input type='submit' value='Submit'></div>";
             echo "</form>";
             echo "</div>";
         }
         else if(isset($_POST['contributor'])) {
             $contributor = $_POST['contributor'];
-            $sql = "SELECT * 
-			FROM SONG as S
-			inner join TYPECONTRIBUTOR as TC
-			on TC.contributorID = '$contributor' AND S.songID = TC.songID 
-			inner join FILES as F 
-			on S.songID = F.songID;";
+            $sql = "SELECT * FROM SONG inner join TYPECONTRIBUTOR on TYPECONTRIBUTOR.contributorID = '$contributor' AND SONG.songID = TYPECONTRIBUTOR.songID inner join FILES on SONG.songID = FILES.songID;";
 
             $result = $pdo->query($sql);
             echo "<div>";
-            echo "<h3>Please choose the correct version of the song you would like to put in the queue:</h3>";
+            echo "<p><font color='white'><b>Please enter your information to be entered into the queue</font></b></p>";
+			echo "<form action='' method='post' align='center'>";
+            echo "<form action='' method='post'>";
+            echo "<input type='text' placeholder='Your Name' name='name'></br></br>
+                  <input type='text' placeholder='Your Phone Number' name='phoneNum'></br></br>
+                  <input type='text' placeholder='Amount To Pay' name='amount'></br>";
+            echo "<div>";
+            echo "<p align='center'><font color='white'><b>Please select the version of the song you would like to play:</font></b></p>";
             echo "<table align='center'>";
-            echo "<tr'>";
+            echo "<tr>";
 			echo "<th> Title </th>";
 			echo "<th> Band Artist </th>";
-            echo "<th> songID </th>";
             echo "<th> fileID </th>";
             echo "<th> Version </th>";
             echo "<th> Select </th>";
@@ -150,19 +153,15 @@ body {
                 $bandArtist = $row['bandArtist'];
 				$songID= $row['songID'];
 				$fileID = $row['fileID'];
-                $version = $row['version'];
-                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='fileID' value='$fileID'></td></tr>";
-
+                                $version = $row['version'];
+                                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='fileID' value='$fileID'></td></tr>";
             }
+ 
             echo "</table>";
-			echo "<p><font color='white'><b>Please enter your information to be entered into the queue</font><b></p>";
-			echo "<form action='' method='post' align='center'>";
-            echo "<input type='text' placeholder='Your Name' name='name'></br>
-                  <input type='text' placeholder='Your Phone Number' name='phoneNum'></br>
-                  <input type='text' placeholder='Amount To Pay' name='amount'></br>";
-				  echo "<h5> Note: if no amount is entered you will be put into the free queue</h5></br>";
+            echo "</div>";
+            echo "<h5> Note: if no amount is entered you will be put into the free queue</h5></br>";
             echo "<div><input type='submit' value='Submit'></div>";
-			
+
             echo "</form>";
             echo "</div>";
         }
@@ -173,32 +172,32 @@ body {
             $name = $_POST['name'];
 
 
-            if ( $fileID == NULL || $phoneNum == NULL || $name == NULL) {
-                echo "<p><font color: #c63606>Submission Failed. Fill all fields.</font></p>";
+            if ( $phoneNum == NULL || $name == NULL) {
+                echo "<p>Submission Failed. Fill all fields.</p>";
             }
             else {
                 $sql = "INSERT INTO USER(phoneNum, name) VALUES ('$phoneNum', '$name');";
                 try {
                     $result = $pdo->query($sql);
-                    echo "<p><font color: #c63606>Submission Successful! </font></p>";
+                    echo "<p><font color=#ffffff> Submission Successful!</font> </p>";
                 }
                 catch (PDOexception $err) {
                     echo "Query Failed: " . $err;
                 }
-                $timeDate = date('m/d/y') . ' ' . date('H:i:s');
-                echo "<p font color=#c63606>'$timeDate'</p>";
+                $timeDate = date('y/m/d') . ' ' . date('H:i:s');
+                echo "<p><font color=#ffffff>'$timeDate'</font></p>";
                 $sql = "INSERT INTO SELECTS(fileID, phoneNum, timeDate, amount) VALUES ('$fileID', '$phoneNum', '$timeDate', '$amount');";
                 try {
                     $result = $pdo->query($sql);
                 }
                 catch (PDOexception $err) {
-                    echo "Query Failed: " . $err;
+                    echo "<p><font color=#ffffff>Query Failed: </font?</p>" . $err;
                 }
             }
         }
 
         else {
-            echo "<p>Submission Failed. Fill all fields.</p>";
+            echo "<p><font color=#ffffff>Submission Failed. Fill all fields.</font></p>";
         }
 
         ?>
