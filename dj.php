@@ -1,5 +1,5 @@
 <?php
-	$password = "1981Aug25";
+	$password = "1985Aug25";
     $username = "z1858089";
 try { // if something goes wrong, an exception is thrown
     
@@ -24,30 +24,42 @@ catch(PDOexception $e) { // handle that exception
 			<h1 class="table-header">Paid Queue</h1>
 			<div class="card">
 				<table class="result-table">
-					<thead>
-						<tr>
-							<th>Select</th>
-							<th>Title</th>
-							<th>Artist</th>
-							<th>Name</th>
-							<th>FileID</th>
-						</tr>
-					</thead>
 					<tbody>
 <?php
 //Paid add
-//$sql = "SELECT P.paidAddID, T.text AS title, A.name as artist, U.name as user, F.fileID FROM Title T, File F, Artist A, User U, PaidAdd P WHERE F.fileID = P.fileID AND T.titleID = F.titleID AND A.artistID = F.artistID AND U.userID = P.userID AND P.played=0 ORDER BY P.amount DESC;";
-$sql = "SELECT amount, bandArtist, title, fileID, firstName, timeDate FROM USER, SONG, FILE, SELECTS WHERE amount !=0 ORDER BY amount DESC;";
+$sql = "SELECT DISTINCT SELECTS.amount, SONG.bandArtist, SONG.title, FILE.fileID, USER.firstName, SELECTS.timeDate FROM USER, SONG, FILE, SELECTS WHERE amount !=0 ORDER BY amount DESC;";
+//$sql = "SELECT userID, fileID, timeDate, amount from SELECTS where amount !=0 ORDER BY amount, timeDate; ";
+
 $result = $pdo->query($sql);
-while ($re = $result->fetch(pdo::FETCH_BOTH))
-{
-	echo "<tr class='item'>";
-	echo "<td><label class='row-item' for='" . $re['paidAddID'] . "'><input type='radio' name='paidSelect' value='" . $re['paidAddID'] . "' id='" . $re['paidAddID'] ."'></label></td>";
-	echo "<td><label class='row-item' for='" . $re['paidAddID'] . "'>" . $re['title'] . "</label></td>";
-	echo "<td><label class='row-item' for='" . $re['paidAddID'] . "'>" . $re['artist'] . "</label></td>";
-	echo "<td><label class='row-item' for='" . $re['paidAddID'] . "'>" . $re['user'] . "</label></td>";
-	echo "<td>" . $re['fileID'] . "</td></tr>";
+//while ($re = $result->fetch(pdo::FETCH_BOTH))
+echo "<table border =1>";
+echo '<td>Select</td>';
+echo '<td>Title</td>';
+echo '<td>Artist</td>';
+echo '<td>Name</td>';
+echo '<td>FileID</td>';
+echo "<table/>";
+
+foreach ($result as $rows){
+	echo "<table border =1>";
+	//button to select
+	echo '<td width = "50">';
+	echo $rows['title'];
+	echo '</td>';
+	echo '<td>';
+	echo $rows['bandArtist'];
+	echo '</td>';
+	echo '<td>';
+	echo $rows['firstName'];
+	echo '</td>';
+	echo '<td>';
+	echo $rows['fileID'];
+	echo '</td>';
+	echo "<table/>";
 }
+
+echo "</table>";
+echo "<br/>";
 ?>
 					</tbody>
 				</table>
@@ -57,14 +69,47 @@ while ($re = $result->fetch(pdo::FETCH_BOTH))
 			<h1 class="table-header">Free Queue</h1>
 			<div class="card">
 				<table class="result-table">
-					<thead>
-						<tr>
-							<th>Select</th>
-							<th>Title</th>
-							<th>Artist</th>
-							<th>Name</th>
-							<th>FileID</th>
-						</tr>
-					</thead>
 					<tbody>
 <?php
+
+$sql = "SELECT userID, fileID, timeDate, amount from SELECTS where amount =0 ORDER BY timeDate; ";
+
+$result = $pdo->query($sql);
+//while ($re = $result->fetch(pdo::FETCH_BOTH))
+echo "<table border =1>";
+echo '<td>Select</td>';
+echo '<td>Title</td>';
+echo '<td>Artist</td>';
+echo '<td>Name</td>';
+echo '<td>FileID</td>';
+echo "<table/>";
+
+foreach ($result as $rows){
+	echo "<table border =1>";
+	//button to select
+	echo '<td>';
+	echo $rows['userID'];
+	echo '</td>';
+	echo '<td>';
+	echo $rows['fileID'];
+	echo '</td>';
+	echo '<td>';
+	echo $rows['timeDate'];
+	echo '</td>';
+	echo "<table/>";
+}
+
+echo "</table>";
+echo "<br/>";
+?>
+					</tbody>
+				</table>
+			</div>
+		</form>
+		<div class="bottom-buffer"></div>
+		<div class="bottom-bar">
+			<input type="submit" class="result-submit" value="Clear Paid Queue" form="DJ1">
+			<input type="submit" class="result-submit" value="Clear Free Queue" form="DJ2">
+		</div>
+	</body>
+</html>
