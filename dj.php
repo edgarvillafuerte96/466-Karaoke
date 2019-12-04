@@ -31,7 +31,7 @@ catch(PDOexception $e) { // handle that exception
                       $sql = "SELECT U.name, SN.title, SN.bandArtist, F.fileID, F.version, SL.amount, F.version
                             FROM USER AS U
                             INNER JOIN SELECTS AS SL
-                            ON U.USERID = SL.USERID
+                            ON U.phoneNum = SL.phoneNum
                             INNER JOIN FILES AS F
                             ON SL.FILEID = F.FILEID
                             INNER JOIN SONG SN
@@ -133,7 +133,7 @@ catch(PDOexception $e) { // handle that exception
 					$sql = "SELECT U.name, SN.title, SN.bandArtist, F.fileID, F.version, SL.amount, F.version
 					FROM USER AS U
 					INNER JOIN SELECTS AS SL
-					ON U.USERID = SL.USERID
+					ON U.phoneNum = SL.phoneNum
 					INNER JOIN FILES AS F
 					ON SL.FILEID = F.FILEID
 					INNER JOIN SONG SN
