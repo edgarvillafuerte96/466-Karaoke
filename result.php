@@ -53,7 +53,7 @@
 				$songID= $row['songID'];
 				$fileID = $row['fileID'];
                                 $version = $row['version'];
-                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='result' value='$fileID'></td></tr>";
+                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='fileID' value='$fileID'></td></tr>";
             }
 
             echo "</table>";
@@ -93,7 +93,7 @@
 				$songID= $row['songID'];
 				$fileID = $row['fileID'];
                                 $version = $row['version'];
-                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='result' value='$fileID'></td></tr>";
+                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='fileID' value='$fileID'></td></tr>";
 
             }
             
@@ -132,7 +132,7 @@
 				$songID= $row['songID'];
 				$fileID = $row['fileID'];
                                 $version = $row['version'];
-                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='result' value='$fileID'></td></tr>";
+                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>".$version."</td><td>"."<input type='radio' name='fileID' value='$fileID'></td></tr>";
 
             }
  
@@ -143,8 +143,8 @@
             echo "</form>";
             echo "</div>";
         }
-        else if(isset($_POST['result'])) {
-            $fileID = $_POST['result'];
+        else if(isset($_POST['fileID'])) {
+            $fileID = $_POST['fileID'];
             $phoneNum = $_POST['phoneNum'];
             $amount = $_POST['amount'];
             $name = $_POST['name'];
@@ -164,7 +164,7 @@
                 }
                 $timeDate = date('m/d/y') . ' ' . date('H:i:s');
                 echo "<p>'$timeDate'</p>";
-                $sql = "INSERT INTO SELECTS(fileID, phoneNum, timeDate, amount, name) VALUES ('$fileID', '$phoneNum', '$timeDate', '$amount', '$name');";
+                $sql = "INSERT INTO SELECTS(fileID, phoneNum, timeDate, amount) VALUES ('$fileID', '$phoneNum', '$timeDate', '$amount');";
                 try {
                     $result = $pdo->query($sql);
                 }
@@ -181,4 +181,3 @@
         ?>
     </body>
 </html>
-
