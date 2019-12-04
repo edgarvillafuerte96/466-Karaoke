@@ -13,7 +13,7 @@ CREATE TABLE SONG (
     PRIMARY KEY (songID)
 );
 
-CREATE TABLE  FILE(
+CREATE TABLE  FILES(
     fileID int NOT NULL AUTO_INCREMENT,
     songID int NOT NULL,
     version varchar(50),
