@@ -1,5 +1,4 @@
 CREATE TABLE USER (
-    userID int NOT NULL AUTO_INCREMENT,
     phoneNum varchar (10) NOT NULL,
     name VARCHAR (50) NOT NULL,
     PRIMARY KEY (userID)
