@@ -50,11 +50,11 @@ INSERT INTO FILES (songID, version) VALUES
 (9, 'Original'),
 (10, 'Original');
 
-INSERT INTO SELECTS (tim6Date, userID, amount, fileID) VALUES
-('2019-12-04 14:23:55', 3, 0, 1),
-('2019-12-04 16:36:21', 2, 2.00, 16),
-('2019-12-04 16:27:18', 5, .50, 4),
-('2019-12-04 16:28:09', 4, 1.00, 10);
+INSERT INTO SELECTS (timeDate, phoneNum, amount, fileID) VALUES
+('2019-12-04 14:23:55', 6305428202, 0, 1),
+('2019-12-04 16:36:21', 6302054221, 2.00, 16),
+('2019-12-04 16:27:18', 6309479478, .50, 4),
+('2019-12-04 16:28:09', 6309406296, 1.00, 10);
 
 INSERT INTO TYPECONTRIBUTOR (contribution, songID, contributorID) VALUES 
 ('Songwriter', 1, 1),
