@@ -28,7 +28,7 @@ CREATE TABLE CONTRIBUTOR (
 CREATE TABLE SELECTS (
     timeDate DATETIME NOT NULL,
     amount float,
-    phoneNum varchar NOT NULL,
+    phoneNum varchar (10) NOT NULL,
     fileID int NOT NULL,
     PRIMARY KEY (timeDate, userID),
     FOREIGN KEY (fileID) references FILES (fileID),
