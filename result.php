@@ -28,7 +28,7 @@
             $sth = $pdo->prepare($sql);
             $sth->execute();
             $res = $sth->fetchAll(PDO::FETCH_ASSOC);
-            $sql = "SELECT * FROM SONG inner join FILES on SONG.bandArtist = '$artist' AND SONG.songID = FILES.songID";
+            $sql = "SELECT * FROM SONG inner join FILES on SONG.bandArtist = '$bandArtist' AND SONG.songID = FILES.songID";
             $result = $pdo->query($sql);
             echo "<div>";
             echo "<h1>Choose a Song</h1>";
@@ -44,8 +44,6 @@
 			echo "<th> Band Artist </th>";
             echo "<th> songID </th>";
             echo "<th> fileID </th>";
-            echo "<th> userID </th>";
-            echo "<th> Name </th>";
             echo "<th> Select </th>";
             echo "</tr>";
             foreach($pdo->query($sql) as $row) {
@@ -54,7 +52,7 @@
 				$songID= $row['songID'];
 				$fileID = $row['fileID'];
 
-                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>".$userID."</td><td'>".$name."<input type='radio' name='selection' value='$fileID'></td></tr>";
+                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>"."<input type='radio' name='result' value='$fileID'></td></tr>";
             }
 
             echo "</table>";
@@ -85,8 +83,6 @@
 			echo "<th> Band Artist </th>";
             echo "<th> songID </th>";
             echo "<th> fileID </th>";
-            echo "<th> userID </th>";
-            echo "<th> Name </th>";
             echo "<th> Select </th>";
             echo "</tr>";
             foreach($pdo->query($sql) as $row) {
@@ -95,7 +91,7 @@
 				$songID= $row['songID'];
 				$fileID = $row['fileID'];
 
-                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>"."<input type='radio' name='selection' value='$fileID'></td></tr>";
+                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>"."<input type='radio' name='result' value='$fileID'></td></tr>";
             }
             
             echo "</table>";
@@ -124,8 +120,6 @@
 			echo "<th> Band Artist </th>";
             echo "<th> songID </th>";
             echo "<th> fileID </th>";
-            echo "<th> userID </th>";
-            echo "<th> Name </th>";
             echo "<th> Select </th>";
             echo "</tr>";
             foreach($pdo->query($sql) as $row) {
@@ -134,7 +128,7 @@
 				$songID= $row['songID'];
 				$fileID = $row['fileID'];
 
-                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>".$userID."</td><td'>".$name."<input type='radio' name='selection' value='$fileID'></td></tr>";
+                echo"<tr align='center'><td>".$title."</td><td>".$bandArtist."</td><td'>".$songID."</td><td>".$fileID."</td><td>"."<input type='radio' name='result' value='$fileID'></td></tr>";
             }
  
             echo "</table>";
@@ -145,18 +139,17 @@
             echo "</div>";
         }
         else if(isset($_POST['result'])) {
-            $userID = $_POST['userID'];
             $file = $_POST['result'];
             $phoneNum = $_POST['phoneNum'];
             $amount = $_POST['amount'];
-            $name = $_POSR['name'];
+            $name = $_POST['name'];
 
 
             if ($userID == NULL || $fileID == NULL || $phoneNum == NULL) {
                 echo "<p>Submission Failed. Fill all fields.</p>";
             }
             else {
-                $sql = "INSERT INTO USER(phoneNum, userID) VALUES ('$phoneNum', '$userID');";
+                $sql = "INSERT INTO USER(phoneNum) VALUES ('$phoneNum');";
                 try {
                     $result = $pdo->query($sql);
                     echo "<p> Submission Successful! </p>";
@@ -183,3 +176,4 @@
         ?>
     </body>
 </html>
+
