@@ -1,4 +1,4 @@
-﻿﻿<?php
+﻿﻿﻿<?php
 	$password = "1985Aug25";
     $username = "z1858089";
 try { // if something goes wrong, an exception is thrown
@@ -130,52 +130,78 @@ catch(PDOexception $e) { // handle that exception
                     <?php
 
                     //free
-                    $sql = "SELECT userID, fileID, timeDate, amount from SELECTS where amount =0 ORDER BY timeDate; ";
-
+					$sql = "SELECT U.name, SN.title, SN.bandArtist, F.fileID, F.version, SL.amount, F.version
+					FROM USER AS U
+					INNER JOIN SELECTS AS SL
+					ON U.USERID = SL.USERID
+					INNER JOIN FILES AS F
+					ON SL.FILEID = F.FILEID
+					INNER JOIN SONG SN
+					ON F.SONGID = SN.SONGID
+				   WHERE SL.AMOUNT = 0;"; 
                     $result = $pdo->query($sql);
-                    echo "
+					echo "
                     <table border=1>
                         ";
                         echo '
-                        <td>Select</td>';
+                        <td width="70">Select</td>';
                         echo '
-                        <td>Title</td>';
+                        <td width="70">Title</td>';
                         echo '
-                        <td>Artist</td>';
+                        <td width="70">Version</td>';
                         echo '
-                        <td>Name</td>';
+                        <td width="70">Artist</td>';
                         echo '
-                        <td>FileID</td>';
-                        echo "
+                        <td width="70">Name</td>';
+                        echo '
+                        <td width="70">FileID</td>';
+						echo "
                         <table />";
 
                         foreach ($result as $rows){
-                        echo "
-                        <table border=1>
-                            ";
-                            //button to select
-                            echo '
-                            <td>
-                                ';
-                                echo $rows['userID'];
-                                echo '
-                            </td>';
-                            echo '
-                            <td>
-                                ';
-                                echo $rows['fileID'];
-                                echo '
-                            </td>';
-                            echo '
-                            <td>
-                                ';
-                                echo $rows['timeDate'];
-                                echo '
-                            </td>';
-                            echo "
-                            <table />";
-                            }
-
+							echo "
+							<table border=1>
+								";
+								//button to select
+								echo '
+								<td width="70">
+									';
+									echo '<input type="radio" name="selected" ';
+		echo '
+								</td>';
+								echo '
+								<td width="70">
+									';
+									echo $rows['title'];
+									echo '
+								</td>';
+								echo '
+								<td width="70">
+									';
+									echo $rows['version'];
+									echo '
+								</td>';
+								echo '
+								<td width="70">
+									';
+									echo $rows['bandArtist'];
+									echo '
+								</td>';
+								echo '
+								<td width="70">
+									';
+									echo $rows['name'];
+									echo '
+								</td>';
+								echo '
+								<td width="70">
+									';
+									echo $rows['fileID'];
+									echo '
+								</td>';
+								echo "
+								<table />";
+								}
                             echo "
                         </table>";
                         echo "
