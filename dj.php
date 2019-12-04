@@ -1,4 +1,4 @@
-﻿﻿﻿﻿<?php
+﻿﻿<?php
 	$password = "1985Aug25";
     $username = "z1858089";
 try { // if something goes wrong, an exception is thrown
@@ -36,7 +36,7 @@ catch(PDOexception $e) { // handle that exception
                             ON SL.FILEID = F.FILEID
                             INNER JOIN SONG SN
                             ON F.SONGID = SN.SONGID
-                           WHERE SL.AMOUNT > 0;";                    
+                           WHERE SL.AMOUNT > 0;";
 
                     //$sql = "SELECT userID, fileID, timeDate, amount from SELECTS where amount !=0 ORDER BY amount, timeDate; ";
 
@@ -67,6 +67,7 @@ catch(PDOexception $e) { // handle that exception
                         <table border=1>
                             ";
                             //button to select
+														echo "<tr class = 'item'>";
                             echo '
                             <td width="70">
                                 ';
@@ -111,6 +112,7 @@ catch(PDOexception $e) { // handle that exception
                             </td>';
                             echo "
                             <table />";
+														echo "</tr>";
                             }
 
                             echo "
@@ -138,7 +140,7 @@ catch(PDOexception $e) { // handle that exception
 					ON SL.FILEID = F.FILEID
 					INNER JOIN SONG SN
 					ON F.SONGID = SN.SONGID
-				   WHERE SL.AMOUNT = 0;"; 
+				   WHERE SL.AMOUNT = 0;";
                     $result = $pdo->query($sql);
 					echo "
                     <table border=1>
