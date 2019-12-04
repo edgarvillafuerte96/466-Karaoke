@@ -27,11 +27,10 @@ catch(PDOexception $e) { // handle that exception
 					<tbody>
 <?php
 //Paid add
-$sql = "SELECT DISTINCT SELECTS.amount, SONG.bandArtist, SONG.title, FILE.fileID, USER.firstName, SELECTS.timeDate FROM USER, SONG, FILE, SELECTS WHERE amount !=0 ORDER BY amount DESC;";
-//$sql = "SELECT userID, fileID, timeDate, amount from SELECTS where amount !=0 ORDER BY amount, timeDate; ";
+//$sql = "SELECT DISTINCT SELECTS.amount, SONG.bandArtist, SONG.title, FILE.fileID, USER.firstName, SELECTS.timeDate FROM USER, SONG, FILE, SELECTS WHERE amount !=0 ORDER BY amount ;";
+$sql = "SELECT * from SELECTS WHERE amount !=0 ORDER BY amount ;";
 
 $result = $pdo->query($sql);
-//while ($re = $result->fetch(pdo::FETCH_BOTH))
 echo "<table border =1>";
 echo '<td width = "70">Select</td>';
 echo '<td width = "70">Title</td>';
