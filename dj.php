@@ -27,7 +27,6 @@ catch(PDOexception $e) { // handle that exception
                 <tbody>
                     <?php
                     //Paid add
-                    //$sql = "SELECT DISTINCT USER.firstName, SELECTS.amount, SONG.bandArtist, SONG.title, FILE.fileID,  SELECTS.timeDate FROM USER, SONG, FILE, SELECTS WHERE amount > 0 ORDER BY USER.firstName DESc ;";
                       $sql = "SELECT U.name, SN.title, SN.bandArtist, F.fileID, F.version, SL.amount, F.version
                             FROM USER AS U
                             INNER JOIN SELECTS AS SL
@@ -38,11 +37,9 @@ catch(PDOexception $e) { // handle that exception
                             ON F.SONGID = SN.SONGID
                            WHERE SL.AMOUNT > 0;";
 
-                    //$sql = "SELECT userID, fileID, timeDate, amount from SELECTS where amount !=0 ORDER BY amount, timeDate; ";
 
                     $result = $pdo->query($sql);
-                    //while ($re = $result->fetch(pdo::FETCH_BOTH))
-                    echo "
+4                       echo "
                     <table border=1>
                         ";
                         echo '
@@ -72,7 +69,7 @@ catch(PDOexception $e) { // handle that exception
                             <td width="70">
                                 ';
                                 echo '<input type="radio" name="selected" ';
-	echo '
+							echo '
                             </td>';
                             echo '
                             <td width="70">
