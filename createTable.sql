@@ -30,7 +30,7 @@ CREATE TABLE SELECTS (
     amount float,
     phoneNum varchar (10) NOT NULL,
     fileID int NOT NULL,
-    PRIMARY KEY (timeDate, userID),
+    PRIMARY KEY (timeDate, phoneNum),
     FOREIGN KEY (fileID) references FILES (fileID),
     FOREIGN KEY (phoneNum) references USER (phoneNum)
 );
