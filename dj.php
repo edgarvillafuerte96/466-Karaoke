@@ -72,10 +72,10 @@ echo "<br/>";
 					<tbody>
 <?php
 
+//free
 $sql = "SELECT userID, fileID, timeDate, amount from SELECTS where amount =0 ORDER BY timeDate; ";
 
 $result = $pdo->query($sql);
-//while ($re = $result->fetch(pdo::FETCH_BOTH))
 echo "<table border =1>";
 echo '<td>Select</td>';
 echo '<td>Title</td>';
