@@ -1,7 +1,7 @@
 CREATE TABLE USER (
     phoneNum varchar (10) NOT NULL,
     name VARCHAR (50) NOT NULL,
-    PRIMARY KEY (userID)
+    PRIMARY KEY (phoneNum)
 ) ;
 
 CREATE TABLE SONG (
@@ -28,11 +28,11 @@ CREATE TABLE CONTRIBUTOR (
 CREATE TABLE SELECTS (
     timeDate DATETIME NOT NULL,
     amount float,
-    userID int NOT NULL,
+    phoneNum varchar NOT NULL,
     fileID int NOT NULL,
     PRIMARY KEY (timeDate, userID),
     FOREIGN KEY (fileID) references FILES (fileID),
-    FOREIGN KEY (userID) references USER (userID)
+    FOREIGN KEY (phoneNum) references USER (phoneNum)
 );
 
 CREATE TABLE TYPECONTRIBUTOR (
