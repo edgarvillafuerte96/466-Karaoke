@@ -3,7 +3,6 @@
 <?php
 if ((isset($_POST['paid']) ? $_POST['paid'] : null))
 {
-<?php
 $username="z1858089"
 $password="1985Aug25"
 try {
