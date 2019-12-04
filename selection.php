@@ -150,7 +150,7 @@
         }
         else if(isset($_POST['selection'])) {
             $userID = $_POST['userID'];
-            $file = $_POST['selection'];
+            $fileID = $_POST['selection'];
             $phoneNum = $_POST['phoneNum'];
             $amount = $_POST['amount'];
             $name = $_POSR['name'];
