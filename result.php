@@ -145,7 +145,7 @@
             $name = $_POST['name'];
 
 
-            if ( $fileID == NULL || $phoneNum == NULL) {
+            if ($fileID == NULL || $phoneNum == NULL) {
                 echo "<p>Submission Failed. Fill all fields.</p>";
             }
             else {
