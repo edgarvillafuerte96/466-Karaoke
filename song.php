@@ -6,7 +6,7 @@ if ((isset($_POST['paid']) ? $_POST['paid'] : null))
 $username="z1858089"
 $password="1985Aug25"
 try {
-        $dsn = "mysql:host=courses;dbname=z1859426";
+        $dsn = "mysql:host=courses;dbname=z1858089";
         $pdo = new PDO($dsn, $username, $password);
 }
 catch(PDOexception $e) {
